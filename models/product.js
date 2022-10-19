@@ -6,7 +6,10 @@ const sequelize = require('../db');
 module.exports = (sequelize, DataTypes) => {
   class Product extends Model {
     static associate(models) {
-      
+      Product.hasMany(models.Discount, {
+        foreignKey: 'productId',
+        as: 'discounts',
+      });
     }
   }
 
@@ -22,11 +25,20 @@ module.exports = (sequelize, DataTypes) => {
     },
     unitPrice: {
       type: DataTypes.INTEGER
-    }
+    },
+    createdAt: {
+         type: DataTypes.DATE,
+         defaultValue: DataTypes.NOW,
+     },
+     updatedAt: {
+         type: DataTypes.DATE,
+         defaultValue: DataTypes.NOW,
+     },
   }, {
     sequelize,
     modelName: 'Product',
-    tableName: 'Products'
+    tableName: 'Products',
+    timestamps: true
   });
 
   return Product;
