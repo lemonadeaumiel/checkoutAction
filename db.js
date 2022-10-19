@@ -10,7 +10,8 @@ const sequelize = new Sequelize('postgres://fsletfzv:3XXuQYLm1vDNQKlgcIT38hkhv5D
     min: dbConfig.development.pool.min,
     acquire: dbConfig.development.pool.acquire,
     idle: dbConfig.development.pool.idle
-  }
+  },
+  logging: false
 });
 
 sequelize.sync

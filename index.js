@@ -1,9 +1,14 @@
+require('dotenv').config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
 const cors = require("cors");
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 8080;
 const sequelize = require('./db')
+const logger = require('morgan');
+
+//API
+const checkoutAPI = require("./routes/product/product");
 
 const corsOptions = {
    origin: "*"
@@ -11,6 +16,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(logger('dev'))
 
 app.listen(PORT, () => console.log(`Server started at http://localhost:${PORT}`));
 
@@ -22,10 +28,10 @@ app.get("/", (request, response) => {
   });
 });
 
-sequelize.sync()
-  .then(() => {
-    console.log("Synced db.");
-  })
-  .catch((err) => {
+sequelize.sync().catch((err) => {
     console.log("Failed to sync db: " + err.message);
-  });
+});
+
+app.use("/", checkoutAPI);
+
+module.exports = app;
