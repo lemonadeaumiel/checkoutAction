@@ -9,7 +9,7 @@ The project is deployed on Github and can be accessed through [this link](https:
 
 
 ## Further Development
-Further developments on the CI/CD pipeline will need to be made, especially to automate the build and notify the reviewer in team setting. The database is populated using seeds beforehand in this version, but in the future development, a combined method with CRUD would also be beneficial, especially for CMS use. The ID is currently auto-incremented (starting from 1) as it allows for faster speed when performing queries and data-independence when searching through thousands of records which might contain frequently altered data elsewhere in the table, but if the (00*) is deemed necessary for other reasons, custom id can be generated in the future, however it may affect the efficiency.
+Further developments on the CI/CD pipeline will need to be made, especially to automate the build and notify the reviewer in team setting. The database is populated using seeds beforehand in this version, but in the future development, a combined method with CRUD would also be beneficial, especially for CMS use. Putting the number of the time a unit is picked on the request would be recommended, as it will shortened the calculation process on the server. The ID is currently auto-incremented (starting from 1) as it allows for faster speed when performing queries and data-independence when searching through thousands of records which might contain frequently altered data elsewhere in the table, but if the (00*) is deemed necessary for other reasons, custom id can be generated in the future, however, it may affect the efficiency.
 
 
 ## Environment var(s)
